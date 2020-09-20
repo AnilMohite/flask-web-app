@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<section id="contact" class="contact_section padding">
+    <div id="google_map" class="hidden-xs"></div>
+    <div class="container">
+        <div class="col-sm-6 col-sm-offset-6">
+            <div class="contact_wrapper">
+                <div class="section_heading mb-30">
+                    <h2>Get In Touch</h2>
+                    <p>let's work together projects and just send me email here.</p>
+                </div>
+                <div class="contact_form">
+                    <form action="https://html.dynamiclayers.net/at/industrial/contact.php" method="post"
+                        id="ajax_form" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                    required>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <textarea id="message" name="message" cols="30" rows="5" class="form-control"
+                                    placeholder="Message" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button id="submit" class="default_btn" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                        <div id="form-messages" class="alert" role="alert"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+{% endblock %}

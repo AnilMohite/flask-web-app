@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<section id="blog" class="blog_section padding">
+    <div class="container">
+        <div class="section_heading align-center mb-40">
+            <h2>Latest Blog News</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <ul class="blog_items">
+            <li class="col-sm-4 col-xs-6 xs-padding">
+                <div class="blog_content">
+                    <img src="{{ url_for('static',filename='img/blog-1.jpg')}}" alt="Our Blog">
+                    <h4><a href="/blog-detail">Fasion Meets Furniture.</a></h4>
+                    <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                    <a href="/blog-detail">READ MORE</a>
+                </div>
+            </li>
+            <li class="col-sm-4 col-xs-6 xs-padding">
+                <div class="blog_content">
+                    <img src="{{ url_for('static',filename='img/blog-2.jpg')}}" alt="Our Blog">
+                    <h4><a href="/blog-detail">We Moved to our new Showroom.</a></h4>
+                    <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                    <a href="/blog-detail">READ MORE</a>
+                </div>
+            </li>
+            <li class="col-sm-4 col-xs-6 xs-padding">
+                <div class="blog_content">
+                    <img src="{{ url_for('static',filename='img/blog-3.jpg')}}" alt="Our Blog">
+                    <h4><a href="/blog-detail">Best Furniture House In London.</a></h4>
+                    <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                    <a href="/blog-detail">READ MORE</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

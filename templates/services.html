@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block body %}
+<section id="services" class="service_section padding">
+    <div class="container">
+        <div class="section_heading align-center mb-40">
+            <h2>Industrial Services</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        <ul class="service_items">
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-1.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Chemical Research</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-2.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Agricultural Processing</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-3.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Alternate Energy</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-4.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Mechanical Engineering</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-5.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Oil And Lubricant</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="col-md-4 col-xs-6">
+                <div class="service_item">
+                    <img src="{{ url_for('static',filename='img/service-6.jpg')}}" alt="service-image">
+                    <a href="/service_detail">
+                        <div class="service_content">
+                            <h4>Chemical Pesearch</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

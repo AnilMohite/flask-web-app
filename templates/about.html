@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="about_section padding">
+    <div class="container">
+        <div class="col-md-4 col-sm-6 xs-padding">
+            <div class="about_content">
+                <h2>We Are Expert <br> And Experienced In Work</h2>
+                <p>Lorem Ipsum is simply dummy text of printing and typesetting industry. It has survived not only
+                    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                </p>
+                <a href="#" class="default_btn">Learn More</a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 xs-padding">
+            <div class="about_image">
+                <img src="{{ url_for('static',filename='img/about-bg.jpg')}}" alt="about-image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-12 xs-padding"> 
+            <ul class="funfact">
+                <li class="fact_content">
+                    <span class="counter">183</span>
+                    <h4>Projects Done</h4>
+                </li>
+                <li class="fact_content">
+                    <span class="counter">945</span>
+                    <h4>Hours Works</h4>
+                </li>
+                <li class="fact_content">
+                    <span class="counter">74</span>
+                    <h4>Satisfide Clients</h4>
+                </li>
+                <li class="fact_content">
+                    <span class="counter">23</span>
+                    <h4>Expert Member</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
