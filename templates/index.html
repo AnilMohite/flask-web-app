@@ -1,0 +1,633 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>KKM</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/elegant-font-icons.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/elegant-line-icons.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.min.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/venobox/venobox.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/owl.carousel.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css')}}">
+    <script src="{{ url_for('static',filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="60">
+
+    <!-- <div id='preloader'>
+        <div class='loader'>
+            <img src="img/three-dots.svg" width="60" alt="">
+        </div>
+    </div> -->
+    <header id="header" class="header_section">
+        <div class="top_header">
+            <div class="container">
+                <div class="col-md-9 col-sm-6">
+                    <div class="top_left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i><a
+                                    href="https://html.dynamiclayers.net/cdn-cgi/l/email-protection"
+                                    class="__cf_email__"
+                                    data-cfemail="96d3fbf7fffad6eff9e3e4f2f9fbf7fff8b8f5f9fb">[email&#160;protected]</a>
+                            </li>
+                            <li><i class="fa fa-phone"></i> +8302-6327-4853</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 hidden-xs">
+                    <div class="top_right align-right">
+                        <ul class="social_icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="nav-btn navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="brand"><img src="{{ url_for('static',filename='img/logo.png')}}" alt="KKM" /></a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav nav-menu">
+                        <li class="active"><a data-scroll href="#home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li><a data-scroll href="#services">Service</a></li>
+                        <li><a data-scroll href="#portfolio">Works</a></li>
+                        <li><a data-scroll href="#testimonial">Reviews</a></li>
+                        <li><a data-scroll href="#blog">News</a></li>
+                        <li><a data-scroll href="#contact">Contact</a></li>
+                    </ul>
+                    <a href="#" class="nav_btn hidden-xs">Build Now</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section id="home" class="slider_section align-center">
+        <ul id="main-slider" class="owl-carousel main_slider">
+            <li class="slider_item" style="background-image: url({{ url_for('static',filename='img/slider-1.jpg')}})">
+                <div class="container">
+                    <div class="display-table">
+                        <div class="table-cell">
+                            <div class="slider_content">
+                                <h1 class="text-white">BUILD YOUR DREAM</h1>
+                                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    <br> industry.Vivamus sodales varius sagittis.</p>
+                                <div class="btn_group">
+                                    <a href="#" class="default_btn">Get Started</a>
+                                    <a href="#" class="default_btn">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="slider_item" style="background-image: url({{ url_for('static',filename='img/slider-2.jpg')}});">
+                <div class="container">
+                    <div class="display-table">
+                        <div class="table-cell">
+                            <div class="slider_content">
+                                <h1 class="text-white">BUILD YOUR DREAM</h1>
+                                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    <br> industry.Vivamus sodales varius sagittis.</p>
+                                <div class="btn_group">
+                                    <a href="#" class="default_btn">Get Started</a>
+                                    <a href="#" class="default_btn">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="slider_item" style="background-image: url({{ url_for('static',filename='img/slider-3.jpg')}});">
+                <div class="container">
+                    <div class="display-table">
+                        <div class="table-cell">
+                            <div class="slider_content">
+                                <h1 class="text-white">BUILD YOUR DREAM</h1>
+                                <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                    <br> industry.Vivamus sodales varius sagittis.</p>
+                                <div class="btn_group">
+                                    <a href="#" class="default_btn">Get Started</a>
+                                    <a href="#" class="default_btn">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="about_section padding">
+        <div class="container">
+            <div class="col-md-4 col-sm-6 xs-padding">
+                <div class="about_content">
+                    <h2>We Are Expert <br> And Experienced In Work</h2>
+                    <p>Lorem Ipsum is simply dummy text of printing and typesetting industry. It has survived not only
+                        five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </p>
+                    <a href="#" class="default_btn">Learn More</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 xs-padding">
+                <div class="about_image">
+                    <img src="{{ url_for('static',filename='img/about-bg.jpg')}}" alt="about-image">
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 xs-padding">
+                <ul class="funfact">
+                    <li class="fact_content">
+                        <span class="counter">183</span>
+                        <h4>Projects Done</h4>
+                    </li>
+                    <li class="fact_content">
+                        <span class="counter">945</span>
+                        <h4>Hours Works</h4>
+                    </li>
+                    <li class="fact_content">
+                        <span class="counter">74</span>
+                        <h4>Satisfide Clients</h4>
+                    </li>
+                    <li class="fact_content">
+                        <span class="counter">23</span>
+                        <h4>Expert Member</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="service_section padding">
+        <div class="container">
+            <div class="section_heading align-center mb-40">
+                <h2>Industrial Services</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <ul class="service_items">
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-1.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Chemical Research</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-2.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Agricultural Processing</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-3.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Alternate Energy</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-4.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Mechanical Engineering</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-5.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Oil And Lubricant</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 col-xs-6">
+                    <div class="service_item">
+                        <img src="{{ url_for('static',filename='img/service-6.jpg')}}" alt="service-image">
+                        <div class="service_content">
+                            <h4>Chemical Pesearch</h4>
+                            <p>Lorem Ipsum is simply the printing industry.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="cta_section padding overlay">
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-6">
+                <div class="cta_content">
+                    <h2 class="text-white">Awerd Winning <br> <span>Industrial</span> Company</h2>
+                    <h4 class="text-white">A hight level Quality Control in compliance with National and In
+                        International regulations and standards.</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not
+                        only five centuries, but also the leap into electronic typesetting, remaining essentially
+                        unchanged.</p>
+                    <a href="#" class="default_btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio" class="works_section padding">
+        <div class="container">
+            <div class="section_heading mb-40 align-center">
+                <h2>Latest Projects</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <ul id="works-carousel" class="owl-carousel works_items mb-20">
+                <li class="works_item">
+                    <img src="{{ url_for('static',filename='img/work-1.jpg')}}" alt="Works">
+                    <a href="img/work-1.jpg" class="works_overlay img_popup">
+                        <div class="works_content">
+                            <h3 class="text-white">Energy Management</h3>
+                            <p>The Category</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="works_item">
+                    <img src="{{ url_for('static',filename='img/work-2.jpg')}}" alt="Works">
+                    <a href="img/work-2.jpg" class="works_overlay img_popup">
+                        <div class="works_content">
+                            <h3 class="text-white">Mechanical Testing</h3>
+                            <p>The Category</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="works_item">
+                    <img src="{{ url_for('static',filename='img/work-3.jpg')}}" alt="Works">
+                    <a href="img/work-3.jpg" class="works_overlay img_popup">
+                        <div class="works_content">
+                            <h3 class="text-white">Welding Genarator</h3>
+                            <p>The Category</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="works_item">
+                    <img src="{{ url_for('static',filename='img/work-4.jpg')}}" alt="Works">
+                    <a href="img/work-4.jpg" class="works_overlay img_popup">
+                        <div class="works_content">
+                            <h3 class="text-white">Metarial Works</h3>
+                            <p>The Category</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="works_item">
+                    <img src="{{ url_for('static',filename='img/work-1.jpg')}}" alt="Works">
+                    <a href="img/work-1.jpg" class="works_overlay img_popup">
+                        <div class="works_content">
+                            <h3 class="text-white">Oil And Lubricant</h3>
+                            <p>The Category</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="team_section padding">
+        <div class="container">
+            <div class="section_heading mb-40 align-center">
+                <h2>Professional Experts</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <ul class="team_members">
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="team_member">
+                        <img src="{{ url_for('static',filename='img/team-1.jpg')}}" alt="Team Member">
+                        <div class="overlay">
+                            <div class="display-table">
+                                <div class="table-cell">
+                                    <div class="team_content mb-15">
+                                        <h4>Michel Brown</h4>
+                                        <p>Lorem Ipsum printing industry.</p>
+                                    </div>
+                                    <ul class="social_links">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="team_member">
+                        <img src="{{ url_for('static',filename='img/team-2.jpg')}}" alt="Team Member">
+                        <div class="overlay">
+                            <div class="display-table">
+                                <div class="table-cell">
+                                    <div class="team_content mb-15">
+                                        <h4>Angelina Rose</h4>
+                                        <p>Lorem Ipsum printing industry.</p>
+                                    </div>
+                                    <ul class="social_links">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="team_member">
+                        <img src="{{ url_for('static',filename='img/team-3.jpg')}}" alt="Team Member">
+                        <div class="overlay">
+                            <div class="display-table">
+                                <div class="table-cell">
+                                    <div class="team_content mb-15">
+                                        <h4>Stephen Roberts</h4>
+                                        <p>Lorem Ipsum printing industry.</p>
+                                    </div>
+                                    <ul class="social_links">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="testimonial" class="testimonial_section padding">
+        <div class="container">
+            <ul id="testimonial_carousel" class="testimonial_items owl-carousel">
+                <li class="testimonial_item">
+                    <figure>
+                        <img src="{{ url_for('static',filename='img/testimonial-1.jpg')}}" alt="Client">
+                    </figure>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Business Ipsum has
+                        been the industry's standard dummy text ever.</p>
+                    <h4>JONATHAN SMITH</h4>
+                </li>
+                <li class="testimonial_item">
+                    <figure>
+                        <img src="{{ url_for('static',filename='img/testimonial-2.jpg')}}" alt="Client">
+                    </figure>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Business Ipsum has
+                        been the industry's standard dummy text ever.</p>
+                    <h4>MICHEL BROWN</h4>
+                </li>
+                <li class="testimonial_item">
+                    <figure>
+                        <img src="{{ url_for('static',filename='img/testimonial-3.jpg')}}" alt="Client">
+                    </figure>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Business Ipsum has
+                        been the industry's standard dummy text ever.</p>
+                    <h4>ANGELINA ROSE</h4>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="blog" class="blog_section padding">
+        <div class="container">
+            <div class="section_heading align-center mb-40">
+                <h2>Latest Blog News</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </div>
+            <ul class="blog_items">
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="blog_content">
+                        <img src="{{ url_for('static',filename='img/blog-1.jp')}}g" alt="Our Blog">
+                        <h4><a href="#">Fasion Meets Furniture.</a></h4>
+                        <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                        <a href="#">READ MORE</a>
+                    </div>
+                </li>
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="blog_content">
+                        <img src="{{ url_for('static',filename='img/blog-2.jp')}}" alt="Our Blog">
+                        <h4><a href="#">We Moved to our new Showroom.</a></h4>
+                        <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                        <a href="#">READ MORE</a>
+                    </div>
+                </li>
+                <li class="col-sm-4 col-xs-6 xs-padding">
+                    <div class="blog_content">
+                        <img src="{{ url_for('static',filename='img/blog-3.jp')}}" alt="Our Blog">
+                        <h4><a href="#">Best Furniture House In London.</a></h4>
+                        <p>Browse the collection of our new products, You definitely find what you are looking for.</p>
+                        <a href="#">READ MORE</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="cta_section_2 align-center">
+        <h3>If You Need Any Industrial Solution ... We Are Available For You</h3>
+        <a href="#" class="default_btn">Start Now</a>
+    </section>
+    <section id="contact" class="contact_section padding">
+        <div id="google_map" class="hidden-xs"></div>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-6">
+                <div class="contact_wrapper">
+                    <div class="section_heading mb-30">
+                        <h2>Get In Touch</h2>
+                        <p>let's work together projects and just send me email here.</p>
+                    </div>
+                    <div class="contact_form">
+                        <form action="https://html.dynamiclayers.net/at/industrial/contact.php" method="post"
+                            id="ajax_form" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-6">
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                                        required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <textarea id="message" name="message" cols="30" rows="5" class="form-control"
+                                        placeholder="Message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <button id="submit" class="default_btn" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                            <div id="form-messages" class="alert" role="alert"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="sponsor_section bg_grey">
+        <div class="container">
+            <ul id="sponsor_carousel" class="sponsor_items owl-carousel">
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-1.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-2.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-3.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-4.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-1.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-2.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-3.png')}}" alt="sponsor-image">
+                </li>
+                <li class="sponsor_item">
+                    <img src="{{ url_for('static',filename='img/sponsor-4.png')}}" alt="sponsor-image">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <section class="widget_section padding">
+        <div class="container">
+            <div class="col-md-3 col-xs-6 xs-padding">
+                <div class="footer_widget">
+                    <a href="#" class="brand"><img class="mb-15" src="img/logo.png" alt="KKM" /></a>
+                    <p>We create web product for the help and the growth our business. We create web for the help.</p>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 sm-padding">
+                <div class="footer_widget">
+                    <h4 class="text-white">Partners</h4>
+                    <ul class="links">
+                        <li><a href="#">Themeforest</a></li>
+                        <li><a href="#">Codecanyon</a></li>
+                        <li><a href="#">Audiojungle</a></li>
+                        <li><a href="#">Videohive</a></li>
+                        <li><a href="#">Photodune</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 sm-padding">
+                <div class="footer_widget">
+                    <h4 class="text-white">Quicklinks</h4>
+                    <ul class="links">
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Blog page</a></li>
+                        <li><a href="#">Home page</a></li>
+                        <li><a href="#">Service</a></li>
+                        <li><a href="#">Ticket</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-6 sm-padding">
+                <div class="footer_widget">
+                    <h4 class="text-white">Company</h4>
+                    <ul class="links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Our team</a></li>
+                        <li><a href="#">Location</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 sm-padding">
+                <div class="footer_widget">
+                    <h4 class="text-white">Subscribe to our contents</h4>
+                    <div class="subscribe_form">
+                        <form action="#" class="subscribe_form">
+                            <input type="email" name="email" id="subs-email" class="form_input"
+                                placeholder="Email Address...">
+                            <button type="submit" class="submit">SUBSCRIBE</button>
+                            <div class="clearfix"></div>
+                            <div id="subscribe-result">
+                                <p class="subscription-success"></p>
+                                <p class="subscription-error"></p>
+                            </div>
+                        </form>
+                        <p class="align-left">There are design companies and then there are user experience design
+                            professional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer_section align-center">
+        <div class="container">
+            <p>&copy; 2017 KKM </p>
+        </div>
+    </footer>
+  
+    <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_carrot-up"></i></a>
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{{ url_for('static',filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/waypoints.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/bootstrap.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/imagesloaded.pkgd.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/owl.carousel.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/jquery.isotope.v3.0.2.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/smooth-scroll.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/venobox.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/jquery.ajaxchimp.min.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/vendor/jquery.counterup.min.js')}}"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGm_weV-pxqGWuW567g78KhUd7n0p97RY"></script>
+
+    <script src="{{ url_for('static',filename='js/contact.js')}}"></script>
+
+    <script src="{{ url_for('static',filename='js/main.js')}}"></script> 
+</body>
+
+</html>
