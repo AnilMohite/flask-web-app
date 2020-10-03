@@ -1,0 +1,15 @@
+{
+  "params":
+  {
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/codingthunder",
+    "prod_uri":"mysql://root:@localhost/codingthunder",
+    "project_name": "ALM",
+    "secret-key": "{~!@#$$#$@%#$%ALM%^&*(alm)01244565645../}",
+    "gmail-user":"mohiteanil22@gmail.com",
+    "gmail-password":"AnilMohite:123",
+    "fb_url":"https://facebook.com/codingthunder",
+    "tw_url":"https://twitter.com/codingthunder",
+    "gh_url": "https://github.com/codingthunder"
+  }
+}

@@ -1,0 +1,87 @@
+
+{% macro sentence_case(text) %}
+    {{ text[0]|upper}}{{text[1:] }}
+{% endmacro %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>ALM | Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='dashboard/css/style.css')}}">
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <h1><a href="/dashboard" class="logo">ALM</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a href="/dashboard-about/0"><span class="fa fa-user"></span> About</a>
+                </li>
+                <li>
+                    <a href="/dashboard-services"><span class="fa fa-cogs"></span> Services</a>
+                </li>
+                <li>
+                    <a href="/dashboard-blogs"><span class="fa fa-sticky-note"></span> Blog</a>
+                </li>
+                <li>
+                    <a href="/dashboard-contacts"><span class="fa fa-paper-plane"></span> Contacts</a>
+                </li>
+            </ul>
+
+            <div class="footer">
+                <p>
+                    Copyright &copy;<script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved  <i class="icon-heart"
+                        aria-hidden="true"></i> by <a href="/" target="_blank" style="color: white;">{{params['project_name']}}</a>
+                </p>
+            </div>
+        </nav>
+
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-cogs"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link user" href="#"><b>Welcome {{sentence_case(username)}}</b></a>
+                                <a class="nav-link logout" href="{{url_for('logout')}}"><i class="fa fa-power-off" style="color:red" data-toggle="tooltip" title="Logout"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="p-4 p-md-5">
+                {% block body %} {% endblock %}
+            </div>          
+            
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='dashboard/js/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='dashboard/js/popper.js')}}"></script>
+    <script src="{{ url_for('static',filename='dashboard/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='dashboard/js/main.js')}}"></script>
+</body>
+
+</html>
