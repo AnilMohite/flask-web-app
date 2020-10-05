@@ -8353,3 +8353,17 @@ a[data-toggle="collapse"] {
     display:inline-block;
   }
 }
+.flashMsg{
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 9%;
+    display: block;
+    right: 0;
+}
+.flashMsg.success{    
+    background: green;
+}
+.flashMsg.error{    
+    background: green;
+}

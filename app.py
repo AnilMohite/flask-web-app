@@ -113,15 +113,35 @@ def logout():
    # Redirect to login page
    return redirect(url_for('dashboard'))
 
-@app.route('/dashboard-about/<string:id>',methods=['GET','POST'])
-def dashboard_about(id):
+@app.route('/dashboard-about')
+def dashboard_about():
     if 'loggedin' in session:
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM about WHERE id=%s AND status=%s",(1,1))
         data = cur.fetchall()
-        data = data.json_encoder()
+        flash('Data Update Successfully... ','success')
+        # data = data.json_encoder()
         if data:
-            return render_template('dashboard-about.html',params=params,username=session['user'],id=id,data=data)
+            return render_template('dashboard-about.html',params=params,username=session['user'],data=data[0])
+    return render_template('login.html',params=params)
+
+@app.route('/dashboard-about-edit/<string:id>',methods=['GET','POST'])
+def dashboard_about_edit(id):
+    if 'loggedin' in session:  
+        
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM about WHERE id=%s AND status=%s",(1,1))            
+        data = cur.fetchall()
+        if id and request.method == 'POST':
+            title = request.form['title']
+            head = request.form['head']
+            body = request.form['body']
+            cur.execute("UPDATE about SET title=%s,head=%s,body=%s WHERE id=%s",(title,head,body,id))
+            mysql.connection.commit()
+            cur.close()
+            return redirect(url_for('dashboard_about'))
+            
+        return render_template('dashboard-about-edit.html',params=params,username=session['user'],id=id,data=data[0])
     return render_template('login.html',params=params)
 
 @app.route('/dashboard-services',methods=['GET','POST'])
@@ -136,9 +156,12 @@ def dashboard_blogs():
         return render_template('dashboard-blogs.html',params=params,username=session['user'])
     return render_template('login.html',params=params)
 
-@app.route('/dashboard-contacts',methods=['GET','POST'])
+@app.route('/dashboard-contacts')
 def dashboard_contacts():
     if 'loggedin' in session:
-        return render_template('dashboard-contacts.html',params=params,username=session['user'])
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM contacts")            
+        data = cur.fetchall()
+        return render_template('dashboard-contacts.html',params=params,username=session['user'],data=data)
     return render_template('login.html',params=params)
 app.run(debug=True)
