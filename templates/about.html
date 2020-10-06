@@ -4,16 +4,13 @@
     <div class="container">
         <div class="col-md-4 col-sm-6 xs-padding">
             <div class="about_content">
-                <h2>We Are Expert <br> And Experienced In Work</h2>
-                <p>Lorem Ipsum is simply dummy text of printing and typesetting industry. It has survived not only
-                    five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                </p>
-                <a href="#" class="default_btn">Learn More</a>
+                <h2>{{data[1]}}</h2>
+                <p>{{data[2]}} </p>                
             </div>
         </div>
         <div class="col-md-6 col-sm-6 xs-padding">
             <div class="about_image">
-                <img src="{{ url_for('static',filename='img/about-bg.jpg')}}" alt="about-image">
+                <img src="{{ url_for('static',filename='img/uploads/'+data[4])}}" alt="about-image">
             </div>
         </div>
         <div class="col-md-2 col-sm-12 xs-padding"> 
@@ -35,6 +32,10 @@
                     <h4>Expert Member</h4>
                 </li>
             </ul>
+        </div>
+        
+        <div class="col-md-12 col-sm-12"> 
+            {{data[3]}}
         </div>
     </div>
 </section>

@@ -14,7 +14,7 @@
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
   <!-- Custom styles for this template -->
-  <link href="{{url_for('static',filename='css/signin.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='dashboard/css/signin.css')}}" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -22,7 +22,7 @@
     <img class="mb-4" src="{{url_for('static',filename='img/logo.png')}}" alt="">
     <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
     <label for="inputEmail" class="sr-only">User Name</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" required autofocus>
+    <input type="text" id="inputEmail" class="form-control" placeholder="User Name" name="username" required autofocus style="margin-bottom: 10px;">
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
     <div class="msg" style="color:red">{{ msg }}</div>

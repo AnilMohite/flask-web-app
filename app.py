@@ -2,16 +2,25 @@ from flask import Flask, flash, render_template, request, redirect, url_for, ses
 from flask_mysqldb import MySQL
 from flask_mail import Mail
 import json
+import os
+from werkzeug.utils import secure_filename
 from datetime import datetime
 now = datetime.now()
 cdatetime = now.strftime('%Y-%m-%d %H:%M:%S')
 
+#include config.json 
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 
-
 app = Flask(__name__)
 app.secret_key = params['secret-key']
+
+# for file upload 
+app.config['UPLOAD_FOLDER'] = params['UPLOAD_FOLDER']
+ALLOWED_EXTENSIONS = params['ALLOWED_EXTENSIONS']
+def allowed_file(filename):
+    return '.' in filename and \
+         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # mail config 
 app.config.update(
@@ -38,7 +47,10 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html',params=params)
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM about WHERE id=%s AND status=%s",(1,1))
+    data = cur.fetchall()
+    return render_template('about.html',params=params,data=data[0])
 
 @app.route("/services")
 def services():
@@ -136,7 +148,27 @@ def dashboard_about_edit(id):
             title = request.form['title']
             head = request.form['head']
             body = request.form['body']
-            cur.execute("UPDATE about SET title=%s,head=%s,body=%s WHERE id=%s",(title,head,body,id))
+            file_old = request.form['file_old']
+           
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+           
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                file_name = file_old
+             
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file_old))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+                file_name = filename
+            cur.execute("UPDATE about SET title=%s,head=%s,body=%s,file=%s WHERE id=%s",(title,head,body,file_name,id))
             mysql.connection.commit()
             cur.close()
             return redirect(url_for('dashboard_about'))
@@ -160,7 +192,7 @@ def dashboard_blogs():
 def dashboard_contacts():
     if 'loggedin' in session:
         cur = mysql.connection.cursor()
-        cur.execute("SELECT * FROM contacts")            
+        cur.execute("SELECT * FROM contacts order by id desc")            
         data = cur.fetchall()
         return render_template('dashboard-contacts.html',params=params,username=session['user'],data=data)
     return render_template('login.html',params=params)

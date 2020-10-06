@@ -25,7 +25,13 @@
     </div>
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="file" class="form-control" id="image" name="image">
+        <div style="margin-bottom: 10px;">
+        {% if data[4] != '' %}
+            <img class="img" width="80" height="80" src="{{url_for('static',filename='img/uploads/'+data[4])}}">
+            <input type="text" class="form-control" id="file-old" name="file_old" value="{{data[4]}}" hidden>
+        {% endif %}
+        </div>
+        <input type="file" class="form-control" id="file" name="file">
     </div>
 </form>
 {% endblock %}
