@@ -1,6 +1,50 @@
 
 {% extends "dashboard-layout.html" %}
 {% block body %}
-    <h1>Hi {{sentence_case(username)}},</h1>
-    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Admin Dashboard-Services </h1>
+<div class="row">
+    <div class="col-md-10">
+        <h3>Services</h3>
+    </div>
+    <div class="col-md-2">
+      <a href="/dashboard-services/add"><button class="btn btn-primary float-right">ADD</button></a>
+    </div>
+</div>
+  <!-- <hr> -->
+   <div class="">
+    <table id="datatable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Sr.No.</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Slug Url</th>
+            <th>Head</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% set i=1 %}
+        {% for service in data %}
+          <tr>
+            <td>{{service[0]}}</td>
+            <td> <img width="80" height="80" src="{{url_for('static',filename='img/uploads/'+service[5])}}"></td>
+            <td>{{service[1]}}</td>
+            <td>{{service[2]}}</td>
+            <td>{{service[3]}}</td>
+            <td>
+                <a href="/dashboard-services/edit/{{service[0]}}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <a href="/dashboard-services/delete/{{service[0]}}" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+          </tr>
+          {% set i = i+1 %}
+        {% endfor %}
+        </tbody>
+      </table>
+   </div>
+   
+   <script>
+    $(document).ready(function() {
+       $('#datatable').DataTable();
+   } );
+  </script>
 {% endblock %}

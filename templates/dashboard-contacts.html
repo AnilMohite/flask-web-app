@@ -2,7 +2,7 @@
 {% extends "dashboard-layout.html" %}
 {% block body %}
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <h3>Contacts</h3>
     </div>
 </div>
@@ -15,6 +15,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Message</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
             <td>{{contact[1]}}</td>
             <td>{{contact[2]}}</td>
             <td>{{contact[3]}}</td>
+            <td><a href="/dashboard-contacts/{{contact[0]}}" class="btn btn-danger">Delete</a></td>
           </tr>
           {% set i = i+1 %}
         {% endfor %}

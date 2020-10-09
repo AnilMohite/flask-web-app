@@ -8354,16 +8354,19 @@ a[data-toggle="collapse"] {
   }
 }
 .flashMsg{
-    color: white;
-    margin: 0;
-    position: absolute;
-    top: 9%;
-    display: block;
-    right: 0;
+  color: white;
+  margin: 0;
+  position: absolute;
+  top: 9%;
+  display: block;
+  right: 0;
 }
 .flashMsg.success{    
-    background: green;
+  background: green;
 }
 .flashMsg.error{    
-    background: green;
+  background: green;
+}
+.flashMsg.warning{    
+  background: var(--warning);
 }

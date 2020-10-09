@@ -54,11 +54,17 @@ def about():
 
 @app.route("/services")
 def services():
-    return render_template('services.html',params=params)
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM services WHERE status=%s order by id desc",(1,))
+    data = cur.fetchall()
+    return render_template('services.html',params=params,data=data)
 
-@app.route("/service_detail")
-def service_detail():
-    return render_template('service_detail.html',params=params)
+@app.route("/services/<string:url>")
+def service_detail(url):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM services WHERE status=%s AND slug_url=%s",(1,url))
+    data = cur.fetchone()
+    return render_template('service_detail.html',params=params,data=data)
 
 @app.route("/blogs")
 def blogs():
@@ -90,7 +96,8 @@ def contact():
         error='failed.'
     return render_template('contact.html',error=error,params=params)
 
-# backend route 
+# ============ Dashboard Backend  ==========================
+
 @app.route('/dashboard',methods=['GET','POST'])
 def dashboard():
     msg=''
@@ -124,6 +131,8 @@ def logout():
    session.pop('user', None)
    # Redirect to login page
    return redirect(url_for('dashboard'))
+
+# ============ Dashboard About  ==========================
 
 @app.route('/dashboard-about')
 def dashboard_about():
@@ -166,8 +175,8 @@ def dashboard_about_edit(id):
                 filename = secure_filename(file.filename)
                 os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file_old))
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
                 file_name = filename
+
             cur.execute("UPDATE about SET title=%s,head=%s,body=%s,file=%s WHERE id=%s",(title,head,body,file_name,id))
             mysql.connection.commit()
             cur.close()
@@ -176,11 +185,109 @@ def dashboard_about_edit(id):
         return render_template('dashboard-about-edit.html',params=params,username=session['user'],id=id,data=data[0])
     return render_template('login.html',params=params)
 
-@app.route('/dashboard-services',methods=['GET','POST'])
+# ============ Dashboard Services  ==========================
+
+@app.route('/dashboard-services')
 def dashboard_services():
     if 'loggedin' in session:
-        return render_template('dashboard-services.html',params=params,username=session['user'])
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM services WHERE status=%s",(1,))            
+        data = cur.fetchall()
+        return render_template('dashboard-services.html',params=params,username=session['user'],data=data)
     return render_template('login.html',params=params)
+
+@app.route('/dashboard-services/add', methods=['GET','POST'])
+def dashboard_services_add():
+    if 'loggedin' in session:
+        if request.method == 'POST':
+            title = request.form['title']
+            head = request.form['head']
+            body = request.form['body']
+            slug_url = title.strip().replace(' ', '-').lower()
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part','warning')
+                return redirect(request.url)
+           
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file','warning')
+                return redirect(request.url)
+             
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            
+            cur = mysql.connection.cursor()
+            cur.execute("INSERT INTO services(title, slug_url,head,body,image,status) VALUES (%s, %s, %s, %s, %s, %s)", (title, slug_url, head, body,filename,1))     
+            mysql.connection.commit()
+            cur.close()
+            return redirect(url_for('dashboard_services'))
+
+        return render_template('dashboard-service-add.html',params=params,username=session['user'])
+    return render_template('login.html',params=params)
+
+
+@app.route('/dashboard-services/edit/<string:id>', methods=['GET','POST'])
+def dashboard_services_edit(id):
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM services WHERE id=%s AND status=%s",(id,1))     
+        data = cur.fetchall()
+        if request.method == 'POST':
+            title = request.form['title']
+            head = request.form['head']
+            body = request.form['body']
+            file_old = request.form['file_old']
+            slug_url = title.strip().replace(' ', '-').lower()
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+           
+            file = request.files['file']
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                file_name = file_old
+
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                os.remove(os.path.join(app.config['UPLOAD_FOLDER'], file_old))
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))            
+                file_name = filename
+
+            cur.execute("UPDATE services SET title=%s,slug_url=%s,head=%s,body=%s,image=%s,status=%s WHERE id=%s",(title,slug_url,head,body,file_name,1,id)) 
+            mysql.connection.commit()
+            cur.close()
+            return redirect(url_for('dashboard_services'))
+
+        return render_template('dashboard-service-edit.html',params=params,username=session['user'],data=data[0])
+    return render_template('login.html',params=params)
+
+
+@app.route('/dashboard-services/delete/<string:id>')
+def dashboard_services_del(id):
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM services WHERE id=%s",(id))        
+        data = cur.fetchall()
+        del_file = data[0][5]
+        if del_file !='':
+            os.remove(os.path.join(app.config['UPLOAD_FOLDER'], del_file))
+            
+        cur.execute("DELETE FROM services WHERE id =%s",(id))    
+        mysql.connection.commit()
+        cur.execute("SELECT * FROM services order by id desc")        
+        data = cur.fetchall()
+        cur.close()
+        return render_template('dashboard-services.html',params=params,username=session['user'],data=data)
+    return render_template('login.html',params=params)
+
+# ============ Dashboard Blogs  ==========================
 
 @app.route('/dashboard-blogs',methods=['GET','POST'])
 def dashboard_blogs():
@@ -188,12 +295,28 @@ def dashboard_blogs():
         return render_template('dashboard-blogs.html',params=params,username=session['user'])
     return render_template('login.html',params=params)
 
+# ============ Dashboard Contacts  ==========================
+
 @app.route('/dashboard-contacts')
 def dashboard_contacts():
     if 'loggedin' in session:
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM contacts order by id desc")            
         data = cur.fetchall()
+       
         return render_template('dashboard-contacts.html',params=params,username=session['user'],data=data)
     return render_template('login.html',params=params)
+
+@app.route('/dashboard-contacts/<string:id>')
+def dashboard_contacts_del(id):
+    if 'loggedin' in session:
+        cur = mysql.connection.cursor()
+        cur.execute("DELETE FROM contacts WHERE id =%s",(id))    
+        mysql.connection.commit()
+        cur.execute("SELECT * FROM contacts order by id desc")        
+        data = cur.fetchall()
+        cur.close()
+        return render_template('dashboard-contacts.html',params=params,username=session['user'],data=data)
+    return render_template('login.html',params=params)
+
 app.run(debug=True)
